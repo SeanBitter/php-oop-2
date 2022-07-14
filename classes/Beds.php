@@ -6,6 +6,14 @@ class Beds extends Product {
   protected $type;
   protected $length;
 
+  function __construct($_name, $_description, $_price, $_type, $_length)
+  {
+    parent::__construct($_name, $_description, $_price);
+
+    $this->setType($_type);
+    $this->setLength($_length);
+  }
+
   /**
    * Get the value of type
    */

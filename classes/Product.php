@@ -3,7 +3,14 @@
 class Product {
   protected $name;
   protected $description;
-  protected $price;
+  protected int $price;
+
+  function __construct($_name, $_description, $_price)
+  {
+    $this->setName($_name);
+    $this->setDescription($_description);
+    $this->setPrice($_price);
+  }
 
   /**
    * Get the value of name

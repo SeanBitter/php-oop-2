@@ -7,6 +7,15 @@ class Food extends Product {
   protected $exprirationDate;
   protected $kcal;
 
+  function __construct($_name, $_description, $_price, $_ingredients, $_expirationDate, $_kcal)
+  {
+    parent::__construct($_name, $_description, $_price);
+
+    $this->setIngredients($_ingredients);
+    $this->setExprirationDate($_expirationDate);
+    $this->setKcal($_kcal);
+  }
+
   /**
    * Get the value of ingredients
    */

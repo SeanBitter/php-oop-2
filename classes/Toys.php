@@ -7,6 +7,15 @@ class Toys extends Product {
   protected $material;
   protected $size;
 
+  function __construct($_name, $_description, $_price, $_colour, $_material, $_size)
+  {
+    parent::__construct($_name, $_description, $_price);
+
+    $this->setColour($_colour);
+    $this->setMaterial($_material);
+    $this->setSize($_size);
+  }
+  
   /**
    * Get the value of colour
    */
