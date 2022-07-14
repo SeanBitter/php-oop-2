@@ -12,7 +12,7 @@ require_once "classes/Product.php";
 require_once "classes/Food.php";
 require_once "classes/Toys.php";
 require_once "classes/Beds.php";
-// require_once "classes/User.php";
+require_once "classes/Customer.php";
 
 $food1 = new Food(
   "Croccantini",
