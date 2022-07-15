@@ -66,9 +66,14 @@ $bed2 = new Beds(
   "150 cm",
 );
 
-var_dump($food1, $food2);
-var_dump($toy1, $toy2);
-var_dump($bed1, $bed2);
+$customer = new Customer("Mario", "Rossi", true, "MasterCard", 3478348734, 543, 2023);
+var_dump($customer);
 
+$customer->cart->addProduct($food1);
+$customer->cart->addProduct($bed2);
+
+var_dump($customer->cart);
+
+var_dump($customer->cart->getTotal());
 
 ?>

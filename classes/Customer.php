@@ -1,17 +1,20 @@
 <?php
 
-require_once __DIR__ . "/Product.php";
+require_once __DIR__ . "/Cart.php";
+require_once __DIR__ . "/PaymentMethod.php";
 
 class Customer {
   protected $name;
-  protected $email;
-  protected bool $registered;
+  protected $surname;
+  public Cart $cart;
+  public PaymentMethod $paymentMethod;
 
-  function __construct($_name, $_email, $_registered)
+  function __construct($_name, $_surname, $_registered, $_type, $_number, $_cvv, $_expDate)
   {
     $this->setName($_name);
-    $this->setEmail($_email);
-    $this->setRegistered($_registered);
+    $this->setSurname($_surname); 
+    $this->cart = new Cart($_registered);
+    $this->paymentMethod = new PaymentMethod($_type, $_number, $_cvv, $_expDate);
   }
 
   /**
@@ -33,40 +36,23 @@ class Customer {
   }
 
   /**
-   * Get the value of email
+   * Get the value of surname
    */
-  public function getEmail()
+  public function getSurname()
   {
-    return $this->email;
+    return $this->surname;
   }
 
   /**
-   * Set the value of email
+   * Set the value of surname
    */
-  public function setEmail($email): self
+  public function setSurname($surname): self
   {
-    $this->email = $email;
+    $this->surname = $surname;
 
     return $this;
   }
 
-  /**
-   * Get the value of registered
-   */
-  public function isRegistered(): bool
-  {
-    return $this->registered;
-  }
-
-  /**
-   * Set the value of registered
-   */
-  public function setRegistered(bool $registered): self
-  {
-    $this->registered = $registered;
-
-    return $this;
-  }
 }
 
 ?>
