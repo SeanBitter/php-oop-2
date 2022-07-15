@@ -1,11 +1,16 @@
 <?php
 
 /*
-Provate ad immaginare quali sono le classi necessarie per creare uno shop online con le seguenti caratteristiche.
+Provate ad immaginare quali sono le classi necessarie per creare 
+uno shop online con le seguenti caratteristiche.
 L’e-commerce vende prodotti per gli animali.
 I prodotti saranno oltre al cibo, anche giochi, cucce, etc.
-L’utente potrà sia comprare i prodotti senza registrarsi, oppure iscriversi e ricevere il 20% di sconto su tutti i prodotti.
+L’utente potrà sia comprare i prodotti senza registrarsi, 
+oppure iscriversi e ricevere il 20% di sconto su tutti i prodotti.
 Il pagamento avviene con la carta di credito, che non deve essere scaduta.
+
+Continuare, aggiungendo la validazione dei dati,
+con eventuale throw Exception e aggiungete almeno 1 Trait.
 */
 
 require_once "classes/Product.php";
@@ -66,14 +71,13 @@ $bed2 = new Beds(
   "150 cm",
 );
 
-$customer = new Customer("Mario", "Rossi", true, "MasterCard", 3478348734, 543, 2023);
-var_dump($customer);
+$customer = new Customer("Mario", "Rossi", true, "MasterCard", 3478348734, 543, "10/2021");
 
 $customer->cart->addProduct($food1);
 $customer->cart->addProduct($bed2);
+var_dump($customer);
 
-var_dump($customer->cart);
+// var_dump($customer->cart);
 
 var_dump($customer->cart->getTotal());
-
 ?>

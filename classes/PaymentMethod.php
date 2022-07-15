@@ -1,10 +1,17 @@
 <?php
 
+require_once __DIR__ . "/../traits/Validator.php";
+
 class PaymentMethod {
+
+  Use Validator;
+
+  private $paymentMethods = [];
   private $type;
-  private $number;
-  private $cvv;
+  private int $number;
+  private int $cvv;
   private $expDate;
+
 
   function __construct($_type, $_number, $_cvv, $_expDate) 
   {
@@ -12,6 +19,24 @@ class PaymentMethod {
     $this->setType($_number);
     $this->setType($_cvv);
     $this->setType($_expDate);
+  }
+
+  public function addPaymentMethod($_paymentMethod)
+  {
+    $this->paymentMethods[] = $_paymentMethod;
+  }
+
+  /**
+   * Get the value of paymentMethods
+   */
+  public function getPaymentMethods()
+  {
+    return $this->paymentMethods;
+  }
+
+  public function getMethod($index)
+  {
+    return $this->getPaymentMethods()[$index];
   }
 
   /**
@@ -81,9 +106,17 @@ class PaymentMethod {
    */
   public function setExpDate($expDate): self
   {
+    $this->validateDate($expDate);
     $this->expDate = $expDate;
 
     return $this;
+  }
+
+  public function validateCard() {
+    $expiration = DateTime::createFromFormat("m/y", $this->expDate);
+    $now = new DateTime("now");
+
+    return $expiration > $now;
   }
 }
 
